@@ -1,5 +1,5 @@
-# BlinkIt-Clone-Full-Stack-Ecommerce
-BlinkIt-Clone-Full-Stack-Ecommerce
+#  Accurate_Distributor
+ Accurate_Distributor medical shop
 
 ![Alt text](Thumnails.png?raw=true "Title")
 
