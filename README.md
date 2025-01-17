@@ -15,6 +15,3 @@ Build a complete e-commerce platform that looks like Blinkit using the MERN stac
   <img src="https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white" alt="amit prajapati"/>
  </a>
 
- Youtube : Dynamic Coding with Amit
-
- 
