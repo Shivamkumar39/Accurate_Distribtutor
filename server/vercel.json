@@ -1,6 +1,6 @@
 {
     "version": 1.0,
-    "nmae": "Accurate_Distribtutor",
+    "name": "Accurate_Distribtutor",
     "builds": [
         {
             "src": "./index.js",
