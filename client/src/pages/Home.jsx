@@ -52,7 +52,7 @@ const Home = () => {
 
 
   return (
-    <section className='bg-gray-100'>
+    <section className='bg-gray-100 ml-10 mr-10 mb-4'>
       <div className='container mx-auto m-8'>
         <div className={`w-full h-80 min-h-48 bg-blue-50 rounded ${!banner && "animate-pulse my-2"} `}>
           <img
@@ -69,7 +69,7 @@ const Home = () => {
       </div>
 
 
-      <section className="py-12 bg-gray-100">
+      <section className="py-8 bg-gray-100">
         <h1 className="text-4xl font-bold text-center text-gray-800 mb-12">About Shop & Top Products</h1>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto px-4">
           {services.map((service) => (
@@ -102,7 +102,7 @@ const Home = () => {
           loadingCategory ? (
             new Array(12).fill(null).map((c, index) => {
               return (
-                <div key={index + "loadingcategory"} className='bg-white rounded p-4 min-h-36  grid gap-6 shadow animate-pulse'>
+                <div key={index + "loadingcategory"} className='bg-white rounded p-4 min-h-36 grid gap-6 shadow animate-pulse'>
                   <div className='bg-blue-100 min-h-24 rounded'></div>
                   <div className='bg-blue-100 h-8 rounded'>
 
@@ -113,13 +113,13 @@ const Home = () => {
           ) : (
             categoryData.map((cat, index) => {
               return (
-                <div key={cat._id + "displayCategory"} className='w-full mt-4' onClick={() => handleRedirectProductListpage(cat._id, cat.name)}>
+                <div key={cat._id + "displayCategory"} className='w-full mt-4 border border-r-4 border-blue-400 bg-white' onClick={() => handleRedirectProductListpage(cat._id, cat.name)}>
                   <div>
                     <img
                       src={cat.image}
-                      className='w-full max-h-24 object-scale-down cursor-pointer'
+                      className='w-full max-h-24 object-scale-down cursor-pointer m-2'
                     />
-                    <h3 className='pt-6 font-bold cursor-pointer'>{cat.name}</h3>
+                    <h3 className='pt-6 font-bold cursor-pointer m-2'>{cat.name}</h3>
                   </div>
                 </div>
               )
