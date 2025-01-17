@@ -86,8 +86,8 @@ const Home = () => {
               <p className="text-gray-600 font-medium mb-4">{service.description}</p>
               {service.link && (
                 <div className="mt-2">
-                {service.link} 
-              </div>
+                  {service.link}
+                </div>
               )}
             </div>
           ))}
@@ -97,37 +97,45 @@ const Home = () => {
 
 
 
-      <div className='container mx-auto px-4 my-2 grid grid-cols-5 md:grid-cols-8 lg:grid-cols-10  gap-2'>
+      <div className="container mx-auto px-4 my-2 grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 lg:grid-cols-8 xl:grid-cols-10 gap-4">
         {
           loadingCategory ? (
-            new Array(12).fill(null).map((c, index) => {
+            new Array(12).fill(null).map((_, index) => {
               return (
-                <div key={index + "loadingcategory"} className='bg-white rounded p-4 min-h-36 grid gap-6 shadow animate-pulse'>
-                  <div className='bg-blue-100 min-h-24 rounded'></div>
-                  <div className='bg-blue-100 h-8 rounded'>
-
-                  </div>
+                <div
+                  key={index + "loadingcategory"}
+                  className="bg-white rounded p-4 min-h-36 grid gap-6 shadow animate-pulse"
+                >
+                  <div className="bg-blue-100 min-h-24 rounded"></div>
+                  <div className="bg-blue-100 h-8 rounded"></div>
                 </div>
-              )
+              );
             })
           ) : (
-            categoryData.map((cat, index) => {
+            categoryData.map((cat) => {
               return (
-                <div key={cat._id + "displayCategory"} className='w-full mt-4 border border-r-4 border-blue-400 bg-white' onClick={() => handleRedirectProductListpage(cat._id, cat.name)}>
-                  <div>
+                <div
+                  key={cat._id + "displayCategory"}
+                  className="w-full border border-r-4 border-blue-400 bg-white rounded-md overflow-hidden shadow-md hover:shadow-lg transition-shadow duration-300"
+                  onClick={() => handleRedirectProductListpage(cat._id, cat.name)}
+                >
+                  <div className="p-2">
                     <img
                       src={cat.image}
-                      className='w-full max-h-24 object-scale-down cursor-pointer m-2'
+                      alt={cat.name}
+                      className="w-full max-h-24 object-scale-down cursor-pointer rounded-md"
                     />
-                    <h3 className='pt-6 font-bold cursor-pointer m-2'>{cat.name}</h3>
+                    <h3 className="pt-4 font-bold text-center text-sm md:text-base cursor-pointer">
+                      {cat.name}
+                    </h3>
                   </div>
                 </div>
-              )
+              );
             })
-
           )
         }
       </div>
+
 
       {/***display category product */}
       {
@@ -138,7 +146,7 @@ const Home = () => {
               id={c?._id}
               name={c?.name}
             />
-          ) 
+          )
         })
       }
 
