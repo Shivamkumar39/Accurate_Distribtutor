@@ -5,6 +5,7 @@
   "type": "module",
   "packageManager": "pnpm@7.5.1",
   "scripts": {
+    "build": "react-scripts build",
     "dev": "vite",
     "build": "vite build",
     "lint": "eslint .",
