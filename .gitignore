@@ -7,25 +7,17 @@ yarn-error.log*
 lerna-debug.log*
 pnpm-debug.log*
 
-# Environment variables
-.env
-.client/.env
-.server/.env
-
 # Production
-build/
-dist/
+node_modules
 dist
 dist-ssr
 *.local
 
-# Dependency directories
-jspm_packages/
+
 
 # IDEs and editors
-.idea/
 .vscode/*
-!.vscode/settings.json
+!.vscode/extensions.json
 .DS_Store
 *.suo
 *.ntvs*
@@ -39,10 +31,3 @@ server/node_modules
 .env
 .client/.env
 .server/.env
-
-# OS files
-.DS_Store
-Thumbs.db
-
-# Optional npm cache directory
-.npm
