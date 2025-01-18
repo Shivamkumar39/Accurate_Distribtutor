@@ -52,24 +52,24 @@ const Home = () => {
 
 
   return (
-    <section className='bg-gray-100 ml-10 mr-10 mb-4'>
-      <div className='container mx-auto m-8'>
-        <div className={`w-full h-80 min-h-48 bg-blue-50 rounded ${!banner && "animate-pulse my-2"} `}>
-          <img
-            src={banner}
-            className='w-full h-full hidden lg:block p-5 justify-center content-center'
-            alt='banner'
-          />
-          <img
-            src={bannerMobile}
-            className='w-full h-full lg:hidden'
-            alt='banner'
-          />
+    <section className='bg-white'>
+    <div className='container mx-auto'>
+        <div className={`w-full h-full min-h-48 bg-blue-100 rounded ${!banner && "animate-pulse my-2" } `}>
+            <img
+              src={banner}
+              className='w-full h-full hidden lg:block'
+              alt='banner' 
+            />
+            <img
+              src={bannerMobile}
+              className='w-full h-full lg:hidden'
+              alt='banner' 
+            />
         </div>
-      </div>
+    </div>
+    
 
-
-      <section className="py-8 bg-gray-100">
+    <section className="py-8 bg-gray-100">
         <h1 className="text-4xl font-bold text-center text-gray-800 mb-12">About Shop & Top Products</h1>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto px-4">
           {services.map((service) => (
@@ -94,65 +94,51 @@ const Home = () => {
         </div>
       </section>
 
-
-
-
-      <div className="container mx-auto px-4 my-2 grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 lg:grid-cols-8 xl:grid-cols-10 gap-4">
+    <div className='container mx-auto px-4 my-2 grid grid-cols-5 md:grid-cols-8 lg:grid-cols-10  gap-2'>
         {
           loadingCategory ? (
-            new Array(12).fill(null).map((_, index) => {
-              return (
-                <div
-                  key={index + "loadingcategory"}
-                  className="bg-white rounded p-4 min-h-36 grid gap-6 shadow animate-pulse"
-                >
-                  <div className="bg-blue-100 min-h-24 rounded"></div>
-                  <div className="bg-blue-100 h-8 rounded"></div>
+            new Array(12).fill(null).map((c,index)=>{
+              return(
+                <div key={index+"loadingcategory"} className='bg-white rounded p-4 min-h-36 grid gap-2 shadow animate-pulse'>
+                  <div className='bg-blue-100 min-h-24 rounded'></div>
+                  <div className='bg-blue-100 h-8 rounded'></div>
                 </div>
-              );
+              )
             })
           ) : (
-            categoryData.map((cat) => {
-              return (
-                <div
-                  key={cat._id + "displayCategory"}
-                  className="w-full border border-r-4 border-blue-400 bg-white rounded-md overflow-hidden shadow-md hover:shadow-lg transition-shadow duration-300"
-                  onClick={() => handleRedirectProductListpage(cat._id, cat.name)}
-                >
-                  <div className="p-2">
-                    <img
-                      src={cat.image}
-                      alt={cat.name}
-                      className="w-full max-h-24 object-scale-down cursor-pointer rounded-md"
-                    />
-                    <h3 className="pt-4 font-bold text-center text-sm md:text-base cursor-pointer">
-                      {cat.name}
-                    </h3>
+            categoryData.map((cat,index)=>{
+              return(
+                <div key={cat._id+"displayCategory"} className='w-full h-full' onClick={()=>handleRedirectProductListpage(cat._id,cat.name)}>
+                  <div>
+                      <img 
+                        src={cat.image}
+                        className='w-full h-full object-scale-down'
+                      />
                   </div>
                 </div>
-              );
+              )
             })
+            
           )
         }
-      </div>
+    </div>
+
+    {/***display category product */}
+    {
+      categoryData?.map((c,index)=>{
+        return(
+          <CategoryWiseProductDisplay 
+            key={c?._id+"CategorywiseProduct"} 
+            id={c?._id} 
+            name={c?.name}
+          />
+        )
+      })
+    }
 
 
-      {/***display category product */}
-      {
-        categoryData?.map((c, index) => {
-          return (
-            <CategoryWiseProductDisplay
-              key={c?._id + "CategorywiseProduct"}
-              id={c?._id}
-              name={c?.name}
-            />
-          )
-        })
-      }
 
-
-
-    </section>
+ </section>
   )
 }
 
