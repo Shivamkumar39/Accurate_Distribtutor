@@ -34,19 +34,19 @@ const Home = () => {
       icon: <RiCustomerService2Fill className="text-3xl text-green-600" />,
       heading: 'Argent Service 24*7',
       description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
-      link: <Link to="/get-help" className="border-4 p-2 rounded-lg border-blue-500 hover:text-green-600">Get-Help</Link>,
+      link: <Link to="/get-help" className="border-4 p-2 rounded-lg border-blue-500 text-cyan-950 hover:text-green-600">Get-Help</Link>,
     },
     {
       icon: <MdLocationOn className="text-3xl text-red-500" />,
       heading: 'Location Shop',
       description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
-      link: <Link to="/location" className="border-4 p-2 rounded-lg border-blue-500 hover:text-green-600">View Locations</Link>,
+      link: <Link to="/location" className="border-4 p-2 rounded-lg border-blue-500 text-cyan-950 hover:text-green-600">View Locations</Link>,
     },
     {
       icon: <MdPeople className="text-3xl text-blue-600" />,
       heading: 'Trusted Users 1000+',
       description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
-      link: <Link to="/aboutShop" className="border-4 p-2 rounded-lg border-blue-500 hover:text-green-600">aboutShop</Link>,
+      link: <Link to="/aboutShop" className="border-4 p-2 rounded-lg border-blue-500 text-cyan-950 hover:text-green-600">aboutShop</Link>,
     },
   ];
 
