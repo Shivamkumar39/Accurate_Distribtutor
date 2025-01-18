@@ -95,6 +95,7 @@ const Home = () => {
       </section>
 
     <div className='container mx-auto px-4 my-2 grid grid-cols-5 md:grid-cols-8 lg:grid-cols-10  gap-2'>
+      <p className='text-gray-600 font-medium mb-4'>Categorys.....</p>
         {
           loadingCategory ? (
             new Array(12).fill(null).map((c,index)=>{
