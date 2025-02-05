@@ -63,18 +63,18 @@ const Header = () => {
                 <div className='container mx-auto flex items-center px-2 justify-between'>
                                 {/**logo */}
                                 <div className='h-full'>
-                                    <Link to={"/"} className='h-full flex justify-center items-center'>
+                                    <Link to={"/"} className='h-auto ml-10 flex justify-center items-center'>
                                         <img 
                                             src={logo}
-                                            width={130}
+                                            width={50}
                                             height={50}
                                             alt='logo'
                                             className='hidden lg:block'
                                         />
                                         <img 
                                             src={logo}
-                                            width={120}
-                                            height={60}
+                                            width={30}
+                                            height={30}
                                             alt='logo'
                                             className='lg:hidden'
                                         />
