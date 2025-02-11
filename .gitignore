@@ -10,7 +10,6 @@ pnpm-debug.log*
 # Production
 node_modules
 dist
-dest
 dist-ssr
 *.local
 
