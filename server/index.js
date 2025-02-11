@@ -36,9 +36,6 @@ app.get("/",(request,response)=>{
         message : "Server is running " + PORT
     })
 })
-app.get("/favicon.png", (req, res) => {
-    res.status(204).end(); // Send empty response, no error
-});
   
 
 app.use('/api/user',userRouter)
