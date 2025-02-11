@@ -1,15 +1,17 @@
 {
-    "version" : 2,
-    "name" : "Accurate-Distribtutor",
-    "builds" : [
-        {
-            "src": "./index.js",
-            "use": "@vercel/node"
-        }
+    "version": 2,
+    "name": "Accurate-Distributor",
+    "builds": [
+      {
+        "src": "index.js",
+        "use": "@vercel/node"
+      }
     ],
-    "routes" : [
-        {
-            "src": "/(.*)"
-        }
+    "routes": [
+      {
+        "src": "/api/(.*)",
+        "dest": "index.js"
+      }
     ]
-}
+  }
+  
