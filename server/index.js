@@ -1,6 +1,7 @@
 import express from 'express'
 import cors from 'cors'
 import dotenv from 'dotenv'
+dotenv.config()
 import cookieParser from 'cookie-parser'
 import morgan from 'morgan'
 import helmet from 'helmet'
@@ -14,9 +15,6 @@ import cartRouter from './route/cart.route.js'
 import addressRouter from './route/address.route.js'
 import orderRouter from './route/order.route.js'
 
-
-
-dotenv.config()
 const app = express()
 app.use(cors({
     credentials : true,
@@ -32,11 +30,11 @@ app.use(helmet({
 const PORT = 8080 || process.env.PORT 
 
 app.get("/",(request,response)=>{
+    ///server to client
     response.json({
         message : "Server is running " + PORT
     })
 })
-  
 
 app.use('/api/user',userRouter)
 app.use("/api/category",categoryRouter)
@@ -52,4 +50,3 @@ connectDB().then(()=>{
         console.log("Server is running",PORT)
     })
 })
-
