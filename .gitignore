@@ -8,10 +8,11 @@ lerna-debug.log*
 pnpm-debug.log*
 
 # Production
-# node_modules
-# dist
-# dist-ssr
-# *.local
+node_modules
+dist
+dest
+dist-ssr
+*.local
 
 
 
