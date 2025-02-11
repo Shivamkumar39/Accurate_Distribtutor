@@ -94,7 +94,6 @@ export async function paymentController(request,response){
             line_items : line_items,
             success_url : `${process.env.FRONTEND_URL}/success`,
             cancel_url : `${process.env.FRONTEND_URL}/cancel`
-
         }
 
         const session = await Stripe.checkout.sessions.create(params)
@@ -111,150 +110,12 @@ export async function paymentController(request,response){
 }
 
 
-// export const fetchOrder = async (req, res) => {
-//     try {
-//         // Fetch all orders with populated delivery_address
-//         const orders = await OrderModel.find()
-//             .populate({
-//                 path: 'delivery_address',
-//                 select: 'address_line city state pincode country mobile', // Select specific fields from address schema
-//             })
-//             .select('subTotalAmt totalAmt payment_status orderId productId') // Select specific fields from order schema
-//             .exec();
-
-//         // Check if orders exist
-//         if (!orders || orders.length === 0) {
-//             return res.status(404).json({
-//                 success: false,
-//                 message: "No orders found."
-//             });
-//         }
-
-//         // Respond with the fetched orders
-//         const formattedOrders = orders.map(order => {
-//             return {
-//                 address: order.delivery_address ? {
-//                     address_line: order.delivery_address.address_line,
-//                     city: order.delivery_address.city,
-//                     state: order.delivery_address.state,
-//                     pincode: order.delivery_address.pincode,
-//                     country: order.delivery_address.country,
-//                     mobile: order.delivery_address.mobile,
-//                 } : null,
-//                 subTotalAmt: order.subTotalAmt,
-//                 totalAmt: order.totalAmt,
-//                 payment_status: order.payment_status,
-//                 orderId: order.orderId,
-//                 productId: order.productId
-//             };
-//         });
-
-//         return res.status(200).json({
-//             success: true,
-//             data: formattedOrders
-//         });
-//     } catch (error) {
-//         console.error("Error fetching orders:", error);
-//         return res.status(500).json({
-//             success: false,
-//             message: "Failed to fetch orders.",
-//             error: error.message
-//         });
-//     }
-// };
-
-
-export const fetchOrder = async (req, res) => {
-    try {
-      // Fetch all orders with populated delivery_address
-      const orders = await OrderModel.find()
-        .populate({
-          path: 'delivery_address',
-          select: 'address_line city state pincode country mobile', // Select specific fields from address schema
-        })
-        .select('subTotalAmt totalAmt payment_status orderId productId isDelivered') // Select specific fields from order schema, including 'isDelivered'
-        .exec();
-  
-      // Check if orders exist
-      if (!orders || orders.length === 0) {
-        return res.status(404).json({
-          success: false,
-          message: "No orders found.",
-        });
-      }
-  
-      // Respond with the fetched orders, including delivery status
-      const formattedOrders = orders.map((order) => ({
-        address: order.delivery_address ? {
-          address_line: order.delivery_address.address_line,
-          city: order.delivery_address.city,
-          state: order.delivery_address.state,
-          pincode: order.delivery_address.pincode,
-          country: order.delivery_address.country,
-          mobile: order.delivery_address.mobile,
-        } : null,
-        subTotalAmt: order.subTotalAmt,
-        totalAmt: order.totalAmt,
-        payment_status: order.payment_status,
-        orderId: order.orderId,
-        productId: order.productId,
-        isDelivered: order.isDelivered, // Include the 'isDelivered' property
-      }));
-  
-      return res.status(200).json({
-        success: true,
-        data: formattedOrders,
-      });
-    } catch (error) {
-      console.error("Error fetching orders:", error);
-      return res.status(500).json({
-        success: false,
-        message: "Failed to fetch orders.",
-        error: error.message,
-      });
-    }
-};
-
-
-export const updateOrderDeliveryStatus = async (req, res) => {
-    try {
-      const { orderId, isDelivered } = req.body;
-  
-      const updatedOrder = await OrderModel.findOneAndUpdate(
-        { orderId },
-        { isDelivered },
-        { new: true }
-      );
-  
-      if (!updatedOrder) {
-        return res.status(404).json({
-          success: false,
-          message: "Order not found.",
-        });
-      }
-  
-      return res.status(200).json({
-        success: true,
-        data: updatedOrder,
-      });
-    } catch (error) {
-      console.error("Error updating order delivery status:", error);
-      return res.status(500).json({
-        success: false,
-        message: "Failed to update delivery status.",
-        error: error.message,
-      });
-    }
-};
-  
-
 const getOrderProductItems = async({
     lineItems,
     userId,
     addressId,
     paymentId,
     payment_status,
-    
  })=>{
     const productList = []
 

@@ -47,13 +47,12 @@ export async function registerUserController(request,response){
 
         const verifyEmail = await sendEmail({
             sendTo : email,
-            subject : "Verify email from Accurate_Distribtutor",
+            subject : "Verify email from binkeyit",
             html : verifyEmailTemplate({
                 name,
                 url : VerifyEmailUrl
             })
         })
-        //verifyEmail()
 
         return response.json({
             message : "User register successfully",

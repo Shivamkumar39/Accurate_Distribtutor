@@ -71,8 +71,8 @@ export const updateCategoryController = async(request,response)=>{
         const update = await CategoryModel.updateOne({
             _id : _id
         },{
-           name,
-           image
+           name, 
+           image 
         })
 
         return response.json({

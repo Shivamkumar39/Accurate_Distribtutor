@@ -3,8 +3,8 @@ import ProductModel from "../models/product.model.js";
 export const createProductController = async(request,response)=>{
     try {
         const { 
-            name,
-            image,
+            name ,
+            image ,
             category,
             subCategory,
             unit,
